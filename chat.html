@@ -158,7 +158,6 @@
         .chatbot-dimmer{
             opacity: 0.3;
         }
-
         </style>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
         <script>
@@ -194,7 +193,6 @@
                     var msg = "<div class='bot-message'><div class='bot-message-container'>" + message + "</div></div>";
                     return msg
                 }
-                //**************************************************
                 //MAIN FUNCTION WHERE THE BACKEND WILL BE INTEGRATED
                 const generateChatbotAnswer = function(message){
                     var output = "";
@@ -204,7 +202,6 @@
                     }
                     return output;
                 }
-                //**************************************************
                 const getRandomNumber = function(){
                     return Math.floor(Math.random() * 4) + 1;
                 }
@@ -289,7 +286,7 @@
                     </div>
 
                     <!-- Chat messages area -->
-                    <div class='chatbot-messages' id="chatbot-messages-logs">
+                    <div class='chatbot-messages' id='chatbot-messages-logs'>
                         <!-- Default Bot messages -->
                         <div class='bot-message'>
                             <div class='bot-message-container'>
@@ -320,10 +317,10 @@
                         </form>
                     </div>
                 </div>
-                <div class='chatbot-close-confirmation-container d-none' id="chatbot-close-confirmation-popup">
+                <div class='chatbot-close-confirmation-container d-none' id='chatbot-close-confirmation-popup'>
                     <div style='margin: 20px'>
-                        <button class="chatbot-confirmation-blue-button" id="chatbot-end-conversation-chat-button">End Chat</button>
-                        <button class="chatbot-confirmation-white-button" id="chatbot-cancle-converstation-chat-button">Cancel</button>
+                        <button class='chatbot-confirmation-blue-button' id='chatbot-end-conversation-chat-button'>End Chat</button>
+                        <button class='chatbot-confirmation-white-button' id='chatbot-cancle-converstation-chat-button'>Cancel</button>
                     </div>
                 </div>
             </div>

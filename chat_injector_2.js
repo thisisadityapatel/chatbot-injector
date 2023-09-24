@@ -1,5 +1,5 @@
 var styles = document.createElement('style');
-styles.innerHTML = `.circular-button {
+styles.innerHTML = `  .circular-button {
     width: 60px;
     height: 60px; 
     background-color: #1E6BD8;
@@ -74,20 +74,20 @@ styles.innerHTML = `.circular-button {
 }
 /* User message styles */
 .user-message {
-    align-self: flex-end; /* Align to the right */
-    margin: 5px 0; /* Adjust margin between messages */
+    align-self: flex-end;
+    margin: 5px 0;
     max-width: 90%;
 }
 .user-message-container {
-    background-color: #1E6BD8; /* Grey background */
+    background-color: #1E6BD8;
     border-radius: 10px;
     padding: 10px;
     color: white !important;
 }
 /* Bot message styles */
 .bot-message {
-    align-self: flex-start; /* Align to the left */
-    margin: 5px 0; /* Adjust margin between messages */
+    align-self: flex-start;
+    margin: 5px 0;
     max-width: 90%;
 }
 .bot-message-container {
@@ -102,9 +102,8 @@ styles.innerHTML = `.circular-button {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-left: 10px; /* Adjust margin as needed */
+    margin-left: 10px;
 }
-/* Adjust the SVG icon size */
 .chatbot-send-button svg {
     height: 30px;
     width: 30px;
@@ -176,7 +175,7 @@ chatBotBody.innerHTML = `<div class='chatBotPackage'>
             </div>
 
             <!-- Chat messages area -->
-            <div class='chatbot-messages' id="chatbot-messages-logs">
+            <div class='chatbot-messages' id='chatbot-messages-logs'>
                 <!-- Default Bot messages -->
                 <div class='bot-message'>
                     <div class='bot-message-container'>
@@ -207,10 +206,10 @@ chatBotBody.innerHTML = `<div class='chatBotPackage'>
                 </form>
             </div>
         </div>
-        <div class='chatbot-close-confirmation-container d-none' id="chatbot-close-confirmation-popup">
+        <div class='chatbot-close-confirmation-container d-none' id='chatbot-close-confirmation-popup'>
             <div style='margin: 20px'>
-                <button class="chatbot-confirmation-blue-button" id="chatbot-end-conversation-chat-button">End Chat</button>
-                <button class="chatbot-confirmation-white-button" id="chatbot-cancle-converstation-chat-button">Cancel</button>
+                <button class='chatbot-confirmation-blue-button' id='chatbot-end-conversation-chat-button'>End Chat</button>
+                <button class='chatbot-confirmation-white-button' id='chatbot-cancle-converstation-chat-button'>Cancel</button>
             </div>
         </div>
     </div>
@@ -251,6 +250,7 @@ script.onload = function () {
             var msg = "<div class='bot-message'><div class='bot-message-container'>" + message + "</div></div>";
             return msg
         }
+        //MAIN FUNCTION WHERE THE BACKEND WILL BE INTEGRATED
         const generateChatbotAnswer = function(message){
             var output = "";
             var randomNumber = getRandomNumber();
