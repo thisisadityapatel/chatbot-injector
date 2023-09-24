@@ -26,7 +26,6 @@
             width: 400px;  /*CONTAINER WIDTH*/
             background-color: #ffffff;
             border-radius: 10px;
-            font-family: 'Open Sans', sans-serif;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
         .chatbot-header {
@@ -38,6 +37,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: default;
         }
         .close-button {
             cursor: pointer;
@@ -107,7 +107,6 @@
             padding: 0;
             margin-left: 10px; /* Adjust margin as needed */
         }
-
         /* Adjust the SVG icon size */
         .chatbot-send-button svg {
             height: 30px;
@@ -115,7 +114,49 @@
             fill: #1e6bd8;
         }
         .chatBotPackage{
-            z-index: 1000;
+            z-index: 998;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .chatbot-time-container{
+            text-align: center;
+            color: #4d4d4d;
+            font-size: 11px;
+            margin: 5px;
+        }
+        .chatbot-close-confirmation-container{
+            width: 400px; /*Confirmation WIDTH*/
+            position: fixed;
+            bottom: 30px; 
+            right: 30px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            height: 120px;
+        }
+        .chatbot-confirmation-blue-button{
+            background-color: #1E6BD8;
+            color: white;
+            border: none;
+            width: 100%; /* Full width */
+            padding: 14px;
+            cursor: pointer;
+            border-radius: 10px; /* 10px border radius */
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .chatbot-confirmation-white-button{
+            background-color: #f2f2f2;
+            color: black;
+            border: none;
+            width: 100%; /* Full width */
+            padding: 14px;
+            cursor: pointer;
+            border-radius: 10px; /* 10px border radius */
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .chatbot-dimmer{
+            opacity: 0.3;
         }
 
         </style>
@@ -126,8 +167,10 @@
                 //toggle button and content of chatBot
                 const submitButton = $('#chatbot-submit-button');
                 const closeButton = $('#chatbot-close-button');
+                const clearChatButton = $('#chatbot-clear-chat-button');
                 const inputField = $('#chatbot-input-message-field');
                 const messageLogs = $('#chatbot-messages-logs');
+                const confirmationPopup = $('#chatbot-close-confirmation-popup');
                 const toggleChatBot = function(){
                     let botButton = $('#chatbot-popup-icon-button');
                     let botContent = $('#chatbot-popu-messages');
@@ -191,6 +234,35 @@
                     e.preventDefault();
                     mainGenerationHandler();
                 })
+                $(document).on('click', '#chatbot-end-conversation-chat-button', function(){
+                    toggleChatBot();
+                    messageLogs.html(`<div class='bot-message'>
+                        <div class='bot-message-container'>
+                            What can I help you with today?
+                        </div>
+                    </div>
+                    <div class='bot-message'>
+                        <div class='bot-message-container'>
+                            Welcome to Helios!
+                        </div>
+                    </div>
+                    <!-- Added this just cause it looks good lol-->
+                    <div class='chatbot-time-container'>
+                        Today
+                    </div>`);
+                    confirmationPopup.addClass('d-none');
+                    submitButton.addClass('d-none');
+                    inputField.val('');
+                    messageLogs.removeClass('chatbot-dimmer');
+                })
+                $(document).on('click', '#chatbot-cancle-converstation-chat-button', function(){
+                    confirmationPopup.addClass('d-none');
+                    messageLogs.removeClass('chatbot-dimmer');
+                })
+                $(document).on('click', '#chatbot-clear-chat-button', function(){
+                    confirmationPopup.removeClass('d-none');
+                    messageLogs.addClass('chatbot-dimmer');
+                })
             })
         </script>
     </head>
@@ -207,12 +279,14 @@
                     <!-- Header -->
                     <div class='chatbot-header'>
                         Helios AI Assistant
-                        <span id='chatbot-close-button' class='close-button'>&#10005;</span> <!-- Close button (an 'X' symbol) -->
+                        <div>
+                            <span id='chatbot-close-button' class='close-button' style='margin-right: 15px; font-size: 18px; font-weight: bold'>&#8722;</span>
+                            <span id='chatbot-clear-chat-button' class='close-button'>&#10005;</span> <!-- Close button (an 'X' symbol) -->
+                        </div>
                     </div>
 
                     <!-- Chat messages area -->
                     <div class='chatbot-messages' id="chatbot-messages-logs">
-                        <!-- Messages will be loaded here -->
                         <!-- Default Bot messages -->
                         <div class='bot-message'>
                             <div class='bot-message-container'>
@@ -224,10 +298,14 @@
                                 Welcome to Helios!
                             </div>
                         </div>
+                        <!-- Added this just cause it looks good lol-->
+                        <div class='chatbot-time-container'>
+                            Today
+                        </div>
                     </div>
                     <!-- Input area -->
                     <div class='chatbot-input'>
-                        <form id="chatbot-input-form">
+                        <form id='chatbot-input-form'>
                             <div class='chatbot-input-container'>
                                 <input type='text' id='chatbot-input-message-field' placeholder='Message...' />
                                 <button class='chatbot-send-button d-none' id='chatbot-submit-button'>
@@ -237,6 +315,12 @@
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class='chatbot-close-confirmation-container d-none' id="chatbot-close-confirmation-popup">
+                    <div style='margin: 20px'>
+                        <button class="chatbot-confirmation-blue-button" id="chatbot-end-conversation-chat-button">End Chat</button>
+                        <button class="chatbot-confirmation-white-button" id="chatbot-cancle-converstation-chat-button">Cancel</button>
                     </div>
                 </div>
             </div>
