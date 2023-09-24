@@ -20,7 +20,7 @@ styles.innerHTML = `.circular-button {
     bottom: 30px; 
     right: 30px;
     width: 400px;  /*CONTAINER WIDTH*/
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -91,9 +91,10 @@ styles.innerHTML = `.circular-button {
     max-width: 90%;
 }
 .bot-message-container {
-    background-color: #f2f2f2; /* Slightly blue background */
+    background-color: #f2f2f2 !important;
     border-radius: 10px;
     padding: 10px;
+    color: black !important;
 }
 /* Send button styles */
 .chatbot-send-button {
@@ -126,11 +127,11 @@ styles.innerHTML = `.circular-button {
     right: 30px;
     text-align: center;
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: #f2f2f2 !important;
     height: 120px;
 }
 .chatbot-confirmation-blue-button{
-    background-color: #1E6BD8;
+    background-color: #1E6BD8 !important;
     color: white;
     border: none;
     width: 100%; /* Full width */
@@ -141,7 +142,7 @@ styles.innerHTML = `.circular-button {
     font-weight: 600;
 }
 .chatbot-confirmation-white-button{
-    background-color: #f2f2f2;
+    background-color: #f2f2f2 !important;
     color: black;
     border: none;
     width: 100%; /* Full width */
@@ -196,7 +197,7 @@ chatBotBody.innerHTML = `<div class='chatBotPackage'>
             <div class='chatbot-input'>
                 <form id='chatbot-input-form'>
                     <div class='chatbot-input-container'>
-                        <input type='text' id='chatbot-input-message-field' placeholder='Message...' />
+                        <input type='text' id='chatbot-input-message-field' placeholder='Message...' style='background-color: white; color: black'/>
                         <button class='chatbot-send-button d-none' id='chatbot-submit-button'>
                             <svg height='30px' width='30px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M16.1391 2.95907L7.10914 5.95907C1.03914 7.98907 1.03914 11.2991 7.10914 13.3191L9.78914 14.2091L10.6791 16.8891C12.6991 22.9591 16.0191 22.9591 18.0391 16.8891L21.0491 7.86907C22.3891 3.81907 20.1891 1.60907 16.1391 2.95907ZM16.4591 8.33907L12.6591 12.1591C12.5091 12.3091 12.3191 12.3791 12.1291 12.3791C11.9391 12.3791 11.7491 12.3091 11.5991 12.1591C11.3091 11.8691 11.3091 11.3891 11.5991 11.0991L15.3991 7.27907C15.6891 6.98907 16.1691 6.98907 16.4591 7.27907C16.7491 7.56907 16.7491 8.04907 16.4591 8.33907Z' fill='#1e6bd8'></path>
