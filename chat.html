@@ -44,7 +44,7 @@
         }
         .chatbot-messages {
             height: 600px; /* HEIGHTVOF THE CONTAINER */
-            overflow-y: scroll; /* Make it scrollable in Y direction */
+            overflow-y: auto; /* Make it scrollable in Y direction */
             padding: 10px;
             display: flex;
             flex-direction: column-reverse; /* Stack messages from the bottom */
@@ -158,6 +158,31 @@
         .chatbot-dimmer{
             opacity: 0.3;
         }
+        @keyframes loading {
+            0% {
+                content: "Typing.";
+            }
+            33% {
+                content: "Typing..";
+            }
+            66% {
+                content: "Typing...";
+            }
+            100% {
+                content: "Typing....';
+            }
+        }
+
+        .loading-dots::before {
+            content: 'Typing....';
+            animation: loading 2s infinite;
+        }
+        .loading-dots {
+            display: inline-block;
+            font-weight: 900;
+            font-style: italic;
+            color:  #5c5b5b;
+        }
         </style>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
         <script>
@@ -170,6 +195,12 @@
                 const inputField = $('#chatbot-input-message-field');
                 const messageLogs = $('#chatbot-messages-logs');
                 const confirmationPopup = $('#chatbot-close-confirmation-popup');
+                const typingBotLoaderValue = `<div class='bot-message' id='chatbot-loading-temp-placeholder'>
+                    <div class='bot-message-container' style="width: 50px">
+                        <div class="loading-dots"></div>
+                    </div>
+                </div>`;
+                const typingBotLoader = $('#chatbot-loading-temp-placeholder');
                 const toggleChatBot = function(){
                     let botButton = $('#chatbot-popup-icon-button');
                     let botContent = $('#chatbot-popu-messages');
@@ -215,7 +246,13 @@
                         submitButton.addClass('d-none');
                     }
                 }
-
+                function sleep(milliseconds) {
+                    var deferred = $.Deferred();
+                    setTimeout(function() {
+                        deferred.resolve();
+                    }, milliseconds);
+                    return deferred.promise();
+                }
                 $(document).on('click', '#chatbot-popup-icon-button', toggleChatBot);
                 $(document).on('click', '#chatbot-close-button', toggleChatBot);
                 $(document).on('keyup', '#chatbot-input-message-field', function(){
@@ -284,7 +321,6 @@
                             <span id='chatbot-clear-chat-button' class='close-button'>&#10005;</span> <!-- Close button (an 'X' symbol) -->
                         </div>
                     </div>
-
                     <!-- Chat messages area -->
                     <div class='chatbot-messages' id='chatbot-messages-logs'>
                         <!-- Default Bot messages -->
