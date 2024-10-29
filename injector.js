@@ -193,7 +193,7 @@ chatBotBody.innerHTML = `<div class='chatBotPackage'>
     <div class='chatbot-container'>
         <!-- Header -->
         <div class='chatbot-header'>
-            Helios AI Assistant
+            Chronobot AI Assistant
             <div>
                 <span id='chatbot-close-button' class='close-button' style='margin-right: 15px; font-size: 18px; font-weight: bold'>&#8722;</span>
                 <span id='chatbot-clear-chat-button' class='close-button'>&#10005;</span> <!-- Close button (an 'X' symbol) -->
@@ -209,7 +209,7 @@ chatBotBody.innerHTML = `<div class='chatBotPackage'>
             </div>
             <div class='bot-message'>
                 <div class='bot-message-container'>
-                    Welcome to Helios!
+                    Welcome to Chronobot!
                 </div>
             </div>
             <!-- Added this just cause it looks good lol-->
@@ -338,7 +338,7 @@ script.onload = function () {
             </div>
             <div class='bot-message'>
                 <div class='bot-message-container'>
-                    Welcome to Helios!
+                    Welcome to Chronobot!
                 </div>
             </div>
             <!-- Added this just cause it looks good lol-->
