@@ -1,1 +1,15 @@
-Just a random javascript code that I had to make for a work project. Main goal was to inject his code directly using inspect on the web page, delivered using a CDN (which currently isn't), for prototyping the functionality on different platforms. Currently not connected to any LLM backend service, if you want you can just copy this, connect it to a backend LLM RAG infrastructure and it you should have a chatbot. Hope you know jQuery for that.
+# Chatbot Injector
+
+This project provides a front-end chatbot interface that can be easily injected into any website for testing and quick prototyping. While it currently only displays a placeholder response, it can be integrated with a backend RAG service for full chatbot functionality in the future, but for now it only quaks!!.
+
+## Usage
+
+1. Open the target website.
+2. Open the browser console.
+3. Paste and run the code below:
+
+   ```javascript
+   fetch('https://api.github.com/repos/thisisadityapatel/chatbot-injector/contents/injector.js')
+       .then(response => response.json())
+       .then(data => eval(atob(data.content)))
+       .catch(error => console.error("Injection failed:", error));
